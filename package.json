@@ -1,0 +1,36 @@
+{
+  "name": "nodejs-hw-mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/Gizemnuravci/nodejs-hw-mongodb#readme",
+  "bugs": {
+    "url": "https://github.com/Gizemnuravci/nodejs-hw-mongodb/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gizemnuravci/nodejs-hw-mongodb.git"
+  },
+  "license": "ISC",
+  "author": "gizemnur.avci <gizemnuravci4@gmail.com>",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.6.3",
+    "mongose": "^0.0.2-security",
+    "pino": "^10.3.1",
+    "pino-http": "^11.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^10.4.1",
+    "nodemon": "^3.1.14"
+  }
+}
