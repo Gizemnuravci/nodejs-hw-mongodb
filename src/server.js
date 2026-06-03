@@ -1,20 +1,15 @@
 import express from 'express';
 import cors from 'cors';
-import pino from 'pino-http';
+import pinoHttp from 'pino-http';
 import contactsRouter from './routers/contacts.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 
-/*import {
-  getContactsController,
-  getContactByIdController,
-} from './controllers/contacts.js';
-*/
 export const setupServer = () => {
   const app = express();
 
   app.use(cors());
-  app.use(pino({ transport: { target: 'pino-pretty' } }));
+  app.use(pinoHttp({ transport: { target: 'pino-pretty' } }));
   app.use(express.json());
 
   app.use(contactsRouter);
