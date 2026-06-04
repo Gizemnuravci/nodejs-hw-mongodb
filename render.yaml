@@ -5,6 +5,9 @@ services:
     plan: free
     buildCommand: npm run build
     startCommand: npm start
+    healthCheckPath: /api-docs
+    healthCheckInterval: 30
+    startupTimeoutSeconds: 300
     envVars:
       - key: NODE_ENV
         value: production
