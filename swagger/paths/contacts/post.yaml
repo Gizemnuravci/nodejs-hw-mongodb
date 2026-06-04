@@ -1,0 +1,41 @@
+tags:
+  - Contacts
+summary: Yeni kişi oluştur
+operationId: createContact
+security:
+  - bearerAuth: []
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - name
+          - email
+          - phone
+        properties:
+          name:
+            type: string
+            example: 'Mehmet Demir'
+          email:
+            type: string
+            format: email
+            example: 'mehmet@example.com'
+          phone:
+            type: string
+            example: '+905329876543'
+          favorite:
+            type: boolean
+            default: false
+responses:
+  '201':
+    description: Kişi başarıyla oluşturuldu.
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/contact.yaml'
+  '400':
+    description: Eksik alan veya doğrulama hatası.
+  '401':
+    $ref: '../../../components/responses/401.yaml'

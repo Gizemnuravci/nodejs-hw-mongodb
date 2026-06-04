@@ -1,0 +1,23 @@
+tags:
+  - Contacts
+summary: ID ile kişi getir
+operationId: getContactById
+security:
+  - bearerAuth: []
+parameters:
+  - name: contactId
+    in: path
+    required: true
+    schema:
+      type: string
+responses:
+  '200':
+    description: Kişi bulundu.
+    content:
+      application/json:
+        schema:
+          $ref: '../../../../components/schemas/contact.yaml'
+  '401':
+    $ref: '../../../../components/responses/401.yaml'
+  '404':
+    $ref: '../../../../components/responses/404.yaml'

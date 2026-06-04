@@ -1,0 +1,38 @@
+tags:
+  - Contacts
+summary: Kişi bilgilerini güncelle
+operationId: updateContact
+security:
+  - bearerAuth: []
+parameters:
+  - name: contactId
+    in: path
+    required: true
+    schema:
+      type: string
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+          email:
+            type: string
+          phone:
+            type: string
+          favorite:
+            type: boolean
+responses:
+  '200':
+    description: Güncelleme başarılı.
+    content:
+      application/json:
+        schema:
+          $ref: '../../../../components/schemas/contact.yaml'
+  '401':
+    $ref: '../../../../components/responses/401.yaml'
+  '404':
+    $ref: '../../../../components/responses/404.yaml'
