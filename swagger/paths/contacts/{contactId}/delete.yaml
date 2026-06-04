@@ -22,6 +22,6 @@ responses:
               type: string
               example: 'contact deleted'
   '401':
-    $ref: '../../../../components/responses/401.yaml'
+    $ref: '../../../components/responses/401.yaml'
   '404':
-    $ref: '../../../../components/responses/404.yaml'
+    $ref: '../../../components/responses/404.yaml'
