@@ -1,0 +1,26 @@
+type: object
+required:
+  - name
+  - email
+  - phone
+properties:
+  _id:
+    type: string
+    example: '64a7b2c9f1d2e3456789abcd'
+  name:
+    type: string
+    example: 'Ahmet Yılmaz'
+  email:
+    type: string
+    format: email
+    example: 'ahmet@example.com'
+  phone:
+    type: string
+    example: '+905551234567'
+  favorite:
+    type: boolean
+    example: false
+  avatarURL:
+    type: string
+    format: uri
+    example: 'https://res.cloudinary.com/demo/image/upload/v123456/avatars/ahmet.jpg'
