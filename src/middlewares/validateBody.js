@@ -5,6 +5,7 @@ export const validateBody = (schema) => {
     try {
       await schema.validateAsync(req.body, {
         abortEarly: false,
+        convert: true,
       });
       next();
     } catch (error) {

@@ -17,6 +17,10 @@ const contactSchema = new Schema(
       required: true,
       ref: 'users',
     },
+    photo: {
+      type: String,
+      default: null,
+    },
   },
   { timestamps: true, versionKey: false },
 );

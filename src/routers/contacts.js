@@ -2,9 +2,9 @@ import { Router } from 'express';
 import { authenticate } from '../middlewares/authenticate.js';
 import * as contactsControllers from '../controllers/contacts.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
-
 import { validateBody } from '../middlewares/validateBody.js';
 import { isValidId } from '../middlewares/isValidId.js';
+import { upload } from '../middlewares/upload.js';
 import {
   createContactSchema,
   updateContactSchema,
@@ -24,6 +24,7 @@ router.get(
 
 router.post(
   '/contacts',
+  upload.single('photo'),
   validateBody(createContactSchema),
   ctrlWrapper(contactsControllers.createContactController),
 );
@@ -31,6 +32,7 @@ router.post(
 router.patch(
   '/contacts/:contactId',
   isValidId,
+  upload.single('photo'),
   validateBody(updateContactSchema),
   ctrlWrapper(contactsControllers.patchContactController),
 );
