@@ -2,7 +2,7 @@ import createError from 'http-errors';
 import * as contactServices from '../services/contacts.js';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseFilterParams } from '../utils/parseFilterParams.js';
-
+import { uploadToCloudinary } from '../services/cloudinary.js';
 export const getContactsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
   const { sortBy, sortOrder } = req.query;
@@ -45,8 +45,17 @@ export const getContactByIdController = async (req, res) => {
 
 export const createContactController = async (req, res) => {
   const userId = req.user._id;
+  let photoUrl = null;
 
-  const contact = await contactServices.createContact(req.body, userId);
+  if (req.file) {
+    photoUrl = await uploadToCloudinary(req.file.path);
+  }
+
+  const contact = await contactServices.createContact(
+    req.body,
+    userId,
+    photoUrl,
+  );
 
   res.status(201).json({
     status: 201,
@@ -58,11 +67,17 @@ export const createContactController = async (req, res) => {
 export const patchContactController = async (req, res) => {
   const { contactId } = req.params;
   const userId = req.user._id;
+  let photoUrl = null;
+
+  if (req.file) {
+    photoUrl = await uploadToCloudinary(req.file.path);
+  }
 
   const contact = await contactServices.updateContact(
     contactId,
     req.body,
     userId,
+    photoUrl,
   );
 
   if (!contact) {
